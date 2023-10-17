@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/style.css">
+    <title>Vite + TypeScript</title>
+  </head>
+  <body>
+    <main @section="main">
+      <h1>Main Page</h1>
+      <script>
+        const root = document.querySelector('main[\\@section="main"]')
+        for(let i = 0;i<15;i++){
+          const h = document.createElement('h2')
+          h.innerText = `Section ${i}`
+          root.appendChild(h)
+          let r = Math.floor(Math.random() * 10)
+          for(let x = 0;x < r;x++){
+            const h = document.createElement('h3')
+            h.innerText = `Sub Section ${x+1}/${r}`
+            root.appendChild(h)
+          }
+        }
+      </script>
+    </main>
+    <section class="toc">
+      <ol @section="toc"></ol>
+    </section>
+    <script type="module" src="/src/toc.ts"></script>
+  </body>
+</html>
